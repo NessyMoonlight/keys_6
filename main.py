@@ -49,7 +49,7 @@ from textblob.classifiers import NaiveBayesClassifier
 
 cl = NaiveBayesClassifier(train)
 
-n = input("Введите текст: ")
+n = input(f"{ru.TEXT}")
 b = TextBlob(n)
 cl.classify(n)
 prob_dist = cl.prob_classify(n)
@@ -63,18 +63,18 @@ average_word_length = syllables / len(b.words) if len(b.words) > 0 else 0
 
 flesch = r.flesch
 
-print(f"Предложений: {sentences}")
-print(f"Слов: {len(b.words)}")
-print(f"Слогов: {syllables}")
-print(f"Средняя длина предложения в словах: {average_sentence_length}")
-print(f"Средняя длина слова в слогах: {average_word_length}")
-print(f"Индекс удобочитаемости Флеша: {flesch.ease}")
+print(f"{ru.SENTENCE} {sentences}")
+print(f"{ru.WORD} {len(b.words)}")
+print(f"{ru.SYLLABLE} {syllables}")
+print(f"{ru.AVERAGE_SENTENCE} {average_sentence_length}")
+print(f"{ru.AVERAGE_WORD} {average_word_length}")
+print(f"{ru.FLASH_INDEX} {flesch.ease}")
 
 if round(prob_dist.prob("pos"), 2) < 0.4:
-    print("Тональность текста: негативный")
+    print(f"{ru.NEGATIVE}")
 elif round(prob_dist.prob("pos"), 2) > 0.6:
-    print("Тональность текста: позитивный")
+    print(f"{ru.POSITIVE}")
 else:
-    print("Тональность текста: нейтральный")
+    print(f"{ru.NEUTRAL}")
 
-print(f"Объективность: {100 - round(b.sentiment.subjectivity, 4) * 100}%")
+print(f"{ru.OBJECTIVITY} {100 - round(b.sentiment.subjectivity, 4) * 100}%")
