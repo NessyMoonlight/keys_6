@@ -21,8 +21,15 @@ def syllable_count(text):
     return count
 
 
-def sentence_count(text):
-    return len([s for s in text.split('.') if s.strip()])
+def sentence_count(str):
+    count = 0
+    syllables = set(".?!")
+
+    for letter in str:
+        if letter in syllables:
+            count = count + 1
+
+    return count
 
 
 train = [
