@@ -1,8 +1,13 @@
+# Case-study #6
+# Developers: Borodin Artemiy, Solovyova Maria,
+# Selikhova Polina
+#
+
 from textblob import TextBlob
 from readability import Readability
 import nltk
 
-
+import ru_local as ru
 
 def syllable_count(str):
     count = 0
