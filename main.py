@@ -7,6 +7,7 @@ import ru_local as ru
 
 from textblob import TextBlob
 from readability import Readability
+import nltk
 
 
 def syllable_count(text):
